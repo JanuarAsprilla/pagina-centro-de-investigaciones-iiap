@@ -70,7 +70,7 @@
 
         .hero-title-3d {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 8rem;
+            font-size: 6.5rem;
             letter-spacing: 10px;
             background: linear-gradient(45deg, #26A65B, #F39C12, #26A65B);
             background-size: 200% 200%;
@@ -698,11 +698,19 @@
             position: relative;
             z-index: 5;
             animation: gif3dFloat 8s ease-in-out infinite;
+            /* Mejoras para nitidez y renderizado */
+            image-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            will-change: transform, opacity;
+            filter: none;
         }
 
         @keyframes gif3dFloat {
             0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.05) translateY(-10px); }
+            /* reducir ligeramente la escala para evitar upscaling y pixelado */
+            50% { transform: scale(1.02) translateY(-8px); }
         }
 
         /* Gradient overlay top */
@@ -781,7 +789,7 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-title-3d { font-size: 4rem; }
+            .hero-title-3d { font-size: 3rem; }
             .section-title { font-size: 3rem; }
             .cards-3d-grid { grid-template-columns: 1fr; gap: 2rem; }
             .timeline-item { grid-template-columns: 1fr; }
@@ -847,17 +855,19 @@
     <!-- HERO 3D -->
     <section class="hero-3d">
         <div class="hero-content-3d">
-            <h1 class="hero-title-3d">CENTRO DE<br/>INVESTIGACIONES</h1>
-            <p class="hero-subtitle-3d">John Von Neumann</p>
+            <h1 class="hero-title-3d">CENTRO EXPERIMENTAL DE <br /> INVESTIGACIONES <br />AMBIENTALES</h1>
+
         </div>
         <div class="scroll-3d" onclick="document.querySelector('.gif-3d-section').scrollIntoView({behavior: 'smooth'})"></div>
     </section>
-
         <!-- GIF FULLSCREEN 3D SECTION -->
     <section class="gif-3d-section">
         <div class="gif-3d-container">
             <div class="gif-3d-effect"></div>
-            <img src="assets/YDRAY-YDRAY-Sede-Tecnica_02.gif" alt="Sede Técnica IIAP" class="gif-3d-image">
+            <!-- Preferir video (MP4/WebM) para mejor calidad; GIF como fallback -->
+            <video class="gif-3d-image" autoplay loop muted>
+                <source src="assets/202512051539.mp4" type="video/mp4">
+            </video>
             <div class="gif-3d-gradient-top"></div>
             <div class="gif-3d-gradient-bottom"></div>
         </div>
@@ -867,8 +877,8 @@
     <section class="intro-statement fade-scroll">
         <div class="intro-container">
             <h2 class="intro-lead">
-                Este es el <span class="highlight">Centro de Investigaciones John Von Neumann del Instituto de Investigaciones Ambientales del Pacífico</span>
-                , un espacio donde se impulsa la investigación que protegerá el pacifico Biogeográfico. Donde cada pasillo cuenta la historia del pacifico Biogeografico, 
+                Este es el <span class="highlight">Centro Experimental de Investigaciones Ambientales</span>
+                , un espacio donde se impulsa la investigación que protegerá el Chocó Biogeográfico. Donde cada pasillo cuenta la historia del Chocó Biogeográfico, 
                 y cada experimento es un paso hacia un futuro sostenible.
             </h2>
             <p class="intro-body">
@@ -912,7 +922,7 @@
             <div class="card-3d">
                 <div class="card-3d-inner">
                     <div class="card-3d-image-container">
-                        <img src="assets/oficina 7.jpeg" alt="Oficinas del Centro" class="card-3d-image">
+                        <img src="assets/oficina 1.jpeg" alt="Oficinas del Centro" class="card-3d-image">
                         <div class="card-3d-image-overlay"></div>
                     </div>
                     <h3 class="card-title-3d">OFICINAS</h3>
@@ -943,7 +953,7 @@
             <div class="card-3d">
                 <div class="card-3d-inner">
                     <div class="card-3d-image-container">
-                        <img src="assets/oficina 3.jpeg" alt="Centro de Documentación" class="card-3d-image">
+                        <img src="assets/CENTRO_DOCUMENTACION.png" alt="Centro de Documentación" class="card-3d-image">
                         <div class="card-3d-image-overlay"></div>
                     </div>
                     <h3 class="card-title-3d">CENTRO DE<br/>DOCUMENTACIÓN</h3>
@@ -958,7 +968,7 @@
             <div class="card-3d">
                 <div class="card-3d-inner">
                     <div class="card-3d-image-container">
-                        <img src="assets/oficina 6.jpeg" alt="Laboratorio de Datos" class="card-3d-image">
+                        <img src="assets/LABORATORIO.jpeg" alt="Laboratorio de Datos" class="card-3d-image">
                         <div class="card-3d-image-overlay"></div>
                     </div>
                     <h3 class="card-title-3d">LABORATORIO<br/>DE DATOS</h3>
@@ -988,7 +998,7 @@
             <div class="card-3d">
                 <div class="card-3d-inner">
                     <div class="card-3d-image-container">
-                        <img src="assets/oficina 5.jpeg" alt="Salas Audiovisuales" class="card-3d-image">
+                        <img src="assets/ESPACIOS_AUDIOVISUALES.jpeg" alt="Salas Audiovisuales" class="card-3d-image">
                         <div class="card-3d-image-overlay"></div>
                     </div>
                     <h3 class="card-title-3d">SALAS<br/>AUDIOVISUALES</h3>
@@ -1095,7 +1105,7 @@
         <div class="cta-content-3d">
             <h2 class="cta-title-3d">VEN A CONOCER<br/>EL FUTURO DE LA CONSERVACIÓN</h2>
             <p class="cta-text-3d">
-                El Centro de Investigaciones John Von Neumann del IIAP está abierto a investigadores, 
+                El Centro Experimental de Investigaciones Ambientales del IIAP está abierto a investigadores, 
                 estudiantes y visitantes comprometidos con la conservación del Pacífico colombiano.
             </p>
             <a href="https://www.google.com/maps/place/Instituto+de+Investigaciones+Ambientales+del+Pac%C3%ADfico+IIAP+-+Sede+T%C3%A9cnica/@5.5717411,-76.6269087,3a,83.6y,256.45h,88.71t/data=!3m7!1e1!3m5!1sLgB1F2XRgXcaxZ5P8lLbPA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.2855038740483167%26panoid%3DLgB1F2XRgXcaxZ5P8lLbPA%26yaw%3D256.44584633907584!7i16384!8i8192!4m14!1m7!3m6!1s0x8e487d80e7043d7f:0xf34a0d17ed19d90b!2sInstituto+de+Investigaciones+Ambientales+del+Pac%C3%ADfico+IIAP+-+Sede+T%C3%A9cnica!8m2!3d5.5717316!4d-76.6269123!16s%2Fg%2F11l1hz1pyc!3m5!1s0x8e487d80e7043d7f:0xf34a0d17ed19d90b!8m2!3d5.5717316!4d-76.6269123!16s%2Fg%2F11l1hz1pyc?entry=ttu&g_ep=EgoyMDI1MTIwOC4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D" class="cta-button-3d">VISÍTANOS</a>

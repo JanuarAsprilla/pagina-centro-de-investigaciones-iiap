@@ -166,24 +166,22 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* 3D CARDS GRID */
+        /* 3D CARDS GRID - REFINED SUBTLE ANIMATION */
         .cards-3d-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 4rem;
-            perspective: 1000px;
         }
 
         .card-3d {
             position: relative;
             height: 500px;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
             cursor: pointer;
             opacity: 0;
             transform: translateY(100px);
+            transition: all 0.8s ease;
         }
 
         .card-3d.visible {
@@ -191,13 +189,18 @@
             transform: translateY(0);
         }
 
+        /* HOVER SUTIL - Similar al Timeline */
         .card-3d:hover {
-            transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .card-3d:hover .card-3d-inner {
+            box-shadow: 0 20px 50px rgba(243, 156, 18, 0.3), 0 0 30px rgba(38, 166, 91, 0.2);
         }
 
         .card-3d:hover .card-3d-image {
-            transform: scale(1.1) translateZ(30px);
-            filter: brightness(0.9);
+            transform: scale(1.08);
+            filter: brightness(0.8) saturate(1.2);
         }
 
         .card-3d-inner {
@@ -209,12 +212,13 @@
             padding: 3rem;
             border: 1px solid rgba(243, 156, 18, 0.3);
             overflow: hidden;
-            transform-style: preserve-3d;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             background-size: cover;
             background-position: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
         }
 
         /* Contenedor imagen como fondo */
@@ -255,11 +259,6 @@
             pointer-events: none;
         }
 
-        .card-3d:hover .card-3d-image {
-            transform: scale(1.08);
-            filter: brightness(0.75);
-        }
-
         .card-3d-inner::before {
             content: '';
             position: absolute;
@@ -290,7 +289,6 @@
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 5;
-            transform: translateZ(50px);
             box-shadow: 0 20px 40px rgba(243, 156, 18, 0.4);
             flex-shrink: 0;
         }
@@ -304,6 +302,7 @@
             z-index: 5;
             letter-spacing: 2px;
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .card-text-3d {
@@ -314,6 +313,7 @@
             z-index: 5;
             max-height: 200px;
             overflow: hidden;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         /* PARALLAX SECTION */
@@ -471,7 +471,6 @@
             background: linear-gradient(135deg, #1A5D3F, #0C3547);
             padding: 3rem;
             border-radius: 20px;
-            transform-style: preserve-3d;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -644,7 +643,6 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(243, 156, 18, 0.5);
             transition: all 0.3s ease;
-            transform-style: preserve-3d;
         }
 
         .cta-button-3d::before {
@@ -796,8 +794,20 @@
             .parallax-number { font-size: 4rem; }
             .cta-title-3d { font-size: 3.5rem; }
             .gif-3d-image { animation: gif3dFloat 10s ease-in-out infinite; }
-            .intro-lead { font-size: 2rem; }
-            .intro-body { font-size: 1.1rem; }
+
+            /* Mejoras para móviles: espaciado y legibilidad centrada */
+            .intro-statement { padding: 6rem 1.5rem; }
+            .intro-container { max-width: 95%; padding: 0 1rem; }
+            .intro-lead {
+                font-size: 2.2rem;
+                line-height: 1.25;
+                margin-bottom: 1.5rem;
+            }
+            .intro-body {
+                font-size: 1.05rem;
+                line-height: 1.6;
+                max-width: 100%;
+            }
         }
 
         /* INTRO STATEMENT */
@@ -805,6 +815,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             background: linear-gradient(180deg, #000 0%, #0B3D2C 50%, #000 100%);
             padding: 10rem 2rem;
             position: relative;
@@ -813,8 +824,14 @@
         }
 
         .intro-container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 1rem;
         }
 
         .intro-lead {
@@ -822,6 +839,7 @@
             line-height: 1.4;
             font-weight: 600;
             color: white;
+            text-align: center;
             margin-bottom: 3rem;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
@@ -836,6 +854,7 @@
             line-height: 1.9;
             color: rgba(255, 255, 255, 0.85);
             max-width: 900px;
+            text-align: center;
         }
 
         /* FADE SCROLL ANIMATION */
@@ -878,11 +897,11 @@
         <div class="intro-container">
             <h2 class="intro-lead">
                 Este es el <span class="highlight">Centro Experimental de Investigaciones Ambientales</span>
-                , un espacio donde se impulsa la investigación basica y aplicada para la toma de decisiones en el Chocó Biogeográfico.
+                , un espacio donde se impulsa la investigación básica y aplicada para la toma de decisiones en el Chocó Biogeográfico.
             </h2>
             <p class="intro-body">
-                A 18 kilómetros de Quibdó, en el corazón del Chocó, un lugar extraordinario emerge de la selva. 
-                Aquí, la ciencia no está encerrada en laboratorios fríos: respira con el bosque, se alimenta del sol 
+                A 18 kilómetros de Quibdó, hacia el sur, en el corazón del Chocó un lugar extraordinario emerge de la selva, justo en la entrada a la comunidad de Doña Josefa (Atrato). 
+                Aquí, la ciencia no está encerrada en laboratorios fríos, respira con el bosque, se alimenta del sol 
                 y se inspira en cada gota de lluvia.
             </p>
         </div>
@@ -1033,7 +1052,7 @@
                 <h3 class="timeline-title">SENDERO ECOLOGICO</h3>
                 <p class="timeline-text">
                     Este no es un simple camino en la selva; es un laboratorio vivo y un aula al aire libre. 
-                    En 260 metros, el sendero “Manigua” sumerge los sentidos en la esencia del Pacífico, entretejiendo 
+                    En 260 metros, el sendero "Madre Agua" sumerge los sentidos en la esencia del Pacífico, entretejiendo 
                     la exuberancia del bosque húmedo tropical con los saberes de sus comunidades. Es una herramienta viva 
                     para investigar y enseñar, donde cada paso revela la conexión entre la red hídrica, la fauna diversa y 
                     la cultura ancestral.
@@ -1107,6 +1126,9 @@
                 El Centro Experimental de Investigaciones Ambientales del IIAP está abierto a investigadores, 
                 estudiantes y visitantes comprometidos con la conservación del Pacífico colombiano.
             </p>
+            <p class="cta-text-3d">
+                Horario de atención: Lunes a Viernes, 9:00 AM - 3:00 PM Jornada continua.
+            </p>
             <a href="https://www.google.com/maps/place/Instituto+de+Investigaciones+Ambientales+del+Pac%C3%ADfico+IIAP+-+Sede+T%C3%A9cnica/@5.5717411,-76.6269087,3a,83.6y,256.45h,88.71t/data=!3m7!1e1!3m5!1sLgB1F2XRgXcaxZ5P8lLbPA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.2855038740483167%26panoid%3DLgB1F2XRgXcaxZ5P8lLbPA%26yaw%3D256.44584633907584!7i16384!8i8192!4m14!1m7!3m6!1s0x8e487d80e7043d7f:0xf34a0d17ed19d90b!2sInstituto+de+Investigaciones+Ambientales+del+Pac%C3%ADfico+IIAP+-+Sede+T%C3%A9cnica!8m2!3d5.5717316!4d-76.6269123!16s%2Fg%2F11l1hz1pyc!3m5!1s0x8e487d80e7043d7f:0xf34a0d17ed19d90b!8m2!3d5.5717316!4d-76.6269123!16s%2Fg%2F11l1hz1pyc?entry=ttu&g_ep=EgoyMDI1MTIwOC4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D" class="cta-button-3d">VISÍTANOS</a>
         </div>
     </section>
@@ -1140,38 +1162,23 @@
                 const speed = 0.3 + (index * 0.1);
                 layer.style.transform = `translate(${scrolled * speed}px, ${scrolled * speed * 0.5}px)`;
             });
-
-            // 3D cards parallax
-            document.querySelectorAll('.card-3d').forEach((card, index) => {
-                const rect = card.getBoundingClientRect();
-                const centerY = rect.top + rect.height / 2;
-                const windowCenterY = window.innerHeight / 2;
-                const offset = (centerY - windowCenterY) / 50;
-                
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    card.style.transform = `translateY(${offset}px)`;
-                }
-            });
         });
 
-        // 3D tilt effect on mouse move
+        // EFECTO HOVER SUTIL PARA CARDS - Similar al Timeline
+        // Solo aplicamos un ligero efecto de glow en hover, sin rotaciones 3D agresivas
         document.querySelectorAll('.card-3d').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            card.addEventListener('mouseenter', function() {
+                const image = this.querySelector('.card-3d-image');
+                if (image) {
+                    image.style.filter = 'brightness(0.8) saturate(1.3) contrast(1.1)';
+                }
             });
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+            card.addEventListener('mouseleave', function() {
+                const image = this.querySelector('.card-3d-image');
+                if (image) {
+                    image.style.filter = 'brightness(1) saturate(1) contrast(1)';
+                }
             });
         });
 
